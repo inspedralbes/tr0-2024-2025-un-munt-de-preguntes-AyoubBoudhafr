@@ -23,7 +23,8 @@ foreach ($array_preguntas as $senseResposta){
     $totRespostes[] = array(
         'id' => $senseResposta['id'],
         'pregunta' => $senseResposta['pregunta'],
-        'respostes' => $senseResposta['respostes']
+        'respostes' => $senseResposta['respostes'],
+        'imatge'=> $senseResposta['imatge'],
     );
 }
 $totRespostes2=json_encode(["preguntes"=>$totRespostes]);

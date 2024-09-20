@@ -7,7 +7,7 @@ fetch('http://localhost/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/ge
         let preguntaHtml = `
 
         <h2>${pregunta.pregunta}</h2>
-        <img src="${pregunta.imatge}" alt="Image" style="max-width: 100%; height: 200px;">`;
+        <img src="${pregunta.imatge}" alt="Image" style="height: 200px;">`;
         
         preguntaHtml += pregunta.respostes.map((resposta, indexResposta) => `
         <p><button onclick="BuscarRespuesta(${indexPregunta}, ${indexResposta})">${resposta.etiqueta}</button></p>`).join('');
