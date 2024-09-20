@@ -2,11 +2,10 @@
 session_start();
 
 $contPreg = 20;
+    header('Content-Type: application/json');
+    $json = file_get_contents("preguntas.json");
+    $array_preguntas = json_decode($json, true)['preguntes'];
 
-function carregarPreguntes() {
-    $json = file_get_contents("../back/preguntas.json");
-    return json_decode($json, true)['preguntes'];
-}
 
 function desordenarPreguntas($preguntas, $contPreg){
     $preguntasDesordenadas = array();
@@ -49,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 } else {
     if (!isset($_SESSION['preguntes'])) {
-        $_SESSION['preguntes'] = desordenarPreguntas(carregarPreguntes(), $contPreg);
+        $_SESSION['preguntes'] = desordenarPreguntas($array_preguntas, $contPreg);
         $_SESSION['preguntaActual'] = 0;
         $_SESSION['puntuacio'] = 0;
         $_SESSION['resultats'] = [];
@@ -60,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<?php 
+<!-- <?php 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resposta'])) {
     $respuestaCorrecta = $_SESSION['preguntes'][$_SESSION['preguntaActual'] - 1]['resposta_correcta'];
     
@@ -94,4 +93,4 @@ if (isset($pregunta)) {
 <form method="post">
     <button type="submit" name="reiniciar" style="background-color: red;">Reiniciar el juego</button>
 </form>
-
+ -->
