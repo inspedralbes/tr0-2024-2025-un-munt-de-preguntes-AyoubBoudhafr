@@ -1,21 +1,18 @@
-
-fetch('http://localhost/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/getPreguntes.php')
-.then(response => response.json())
-.then(data => {
-    console.log(data)
-    data.preguntes.forEach((pregunta, indexPregunta) => {
-        let preguntaHtml = `
-
-        <h2>${pregunta.pregunta}</h2>
-        <img src="${pregunta.imatge}" alt="Image" style="height: 200px;">`;
-        
-        preguntaHtml += pregunta.respostes.map((resposta, indexResposta) => `
-        <p><button onclick="BuscarRespuesta(${indexPregunta}, ${indexResposta})">${resposta.etiqueta}</button></p>`).join('');
-        preguntaHtml += '<hr>';
-
-        document.body.innerHTML += preguntaHtml;
-    });
-});
-function BuscarRespuesta(preguntaIndex, respostaIndex) {
-    console.log(`Pregunta número: ${preguntaIndex + 1}, Resposta número: ${respostaIndex + 1}`);
-}
+fetch("http://localhost/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/getPreguntes.php")
+    .then(resp => resp.json())
+    .then(data => {
+        let pregActual = 0;
+        mostrarPregunta(data,pregActual);
+    })
+    function mostrarPregunta(data,pregActual){
+        let salida = ''
+        let totPreguntas = data.preguntes;
+        let pregunta = totPreguntas[pregActual].pregunta
+        salida += '<h3>'+pregunta+'</h3>';
+        salida += '<img style="height: 200px" src="'+totPreguntas[pregActual].imatge+'">'
+        let respuestas = totPreguntas[pregActual].respostes; 
+        for (let j = 0; j <respuestas.length; j++) {
+            salida += '<br><button onclick="">'+respuestas[j].etiqueta+'</button>';
+        }
+        document.getElementById("test").innerHTML = salida;
+    }
