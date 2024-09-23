@@ -1,13 +1,16 @@
 body{
     text-align: center;
-    background-color: #27191c;
+    background-color: #574d4f;
 }
 button{
-    background-color:   #c0ad70;
+    background-color:  #969091;
     color: #e0e4ce;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 3%;
+    margin-right: 3%;
+    size: 200px;
 }
 button:hover{
     background-color: #454545;
@@ -17,4 +20,13 @@ h3{
 }
 h2{
     color: #e0e4ce;
+}
+h1{
+    color: #e0e4ce;
+}   
+.reset{
+    margin-top: 3%;
+}
+
+.resp{
 }

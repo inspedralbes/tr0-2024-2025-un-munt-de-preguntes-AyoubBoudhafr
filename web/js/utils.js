@@ -1,7 +1,6 @@
 let dataGlobal;
-
+let arrayRespostes = [];
 obtPreg();
-
 function obtPreg(){
     let json = "../back/getPreguntes.php";
     fetch(json)
@@ -26,21 +25,43 @@ function mostrarPregunta(data, pregActual) {
         let respuestas = totPreguntas[pregActual].respostes;
 
         for (let j = 0; j < respuestas.length; j++) {
-            salida += '<br><button onclick="siguientePregunta(' + (pregActual + 1) + ', ' + (j + 1) + ')">' + respuestas[j].etiqueta + '</button>';
-        }
+            salida += '<br><button class="resp" onclick="siguientePregunta(' + (pregActual + 1) + ', ' + (j + 1) + ')">' + respuestas[j].etiqueta + '</button>';
 
-        salida += '<br><button onclick="resetTest()">Restart</button>';
+        }
+        salida += '<br><button onclick="anterior('+pregActual+')">Anterior</button>'
+        salida += '<button class="reset" onclick="resetTest()">Restart</button>';
+        salida += '<button onclick="siguiente('+pregActual+')">Siguiente</button>'
         document.getElementById("test").innerHTML = salida;
     } else {
-        document.getElementById("test").innerHTML = "¡Se acabaron las preguntas!";
+        finalitza(arrayRespostes);
     }
 }
 
 function siguientePregunta(pregActual, respuesta) {
-    console.log('Respuesta seleccionada: ' + respuesta);
+    arrayRespostes.push(respuesta);
     mostrarPregunta(dataGlobal, pregActual);
 }
 
 function resetTest() {
+    obtPreg();
     mostrarPregunta(dataGlobal, 0);
 }
+function anterior(pregActual){
+    pregActual--;
+    mostrarPregunta(dataGlobal, pregActual);
+}
+function siguiente(pregActual){
+    pregActual++;
+    mostrarPregunta(dataGlobal, pregActual);
+}
+function finalitza(){
+    fetch("../back/finalitzar.php",{
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify({arrayRespostes})
+    })
+}
+
