@@ -1,6 +1,9 @@
 let dataGlobal;
-let arrayRespostes = [];
+let arrayRespostes = new Array(10);
+let arrayIds = [];
+
 obtPreg();
+
 function obtPreg(){
     let json = "../back/getPreguntes.php";
     fetch(json)
@@ -9,6 +12,9 @@ function obtPreg(){
         dataGlobal = data;
         let pregActual = 0;
         mostrarPregunta(dataGlobal, pregActual);
+        data.preguntes.forEach(preg => {
+            arrayIds.push(preg.id);
+        })
     });
 }
 
@@ -38,30 +44,40 @@ function mostrarPregunta(data, pregActual) {
 }
 
 function siguientePregunta(pregActual, respuesta) {
-    arrayRespostes.push(respuesta);
+    arrayRespostes[pregActual] = respuesta;
     mostrarPregunta(dataGlobal, pregActual);
 }
 
 function resetTest() {
+    let arrayRespostes = new Array(10);
+    arrayIds = [];
     obtPreg();
     mostrarPregunta(dataGlobal, 0);
 }
-function anterior(pregActual){
-    pregActual--;
-    mostrarPregunta(dataGlobal, pregActual);
+function anterior(pregActual) {
+    if (pregActual > 0) { 
+        pregActual--;
+        mostrarPregunta(dataGlobal, pregActual);
+    }
 }
-function siguiente(pregActual){
-    pregActual++;
-    mostrarPregunta(dataGlobal, pregActual);
+
+function siguiente(pregActual) {
+    if (pregActual + 1 < dataGlobal.preguntes.length) { 
+        pregActual++;
+        mostrarPregunta(dataGlobal, pregActual);
+    }
 }
 function finalitza(){
+    let results = [];
+    arrayIds.forEach((id, i) => {
+        results.push({id: id, resposta: arrayRespostes[i]})
+    });
     fetch("../back/finalitzar.php",{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           method: "POST",
-          body: JSON.stringify({arrayRespostes})
-    })
+          body: JSON.stringify({results})
+    });
 }
-

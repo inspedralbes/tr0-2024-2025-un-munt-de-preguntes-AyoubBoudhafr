@@ -1,13 +1,37 @@
 <?php
-session_start();
 
-if (!isset($_SESSION['resultats'])) {
-    header('Location: index.php');
-    exit;
+header('Content-Type: application/json');
+
+$jsonjs = file_get_contents("../web/js/utils.js");
+$respostes = json_decode($jsonjs, true);
+
+$json = file_get_contents("preguntas.json");
+$correccion = json_decode($json, true);
+
+$respostesrCorrectes = [];
+foreach($correccion["preguntes"] as $rCorrectas) { 
+    $respostesrCorrectes[] = $rCorrectas["resposta_correcta"]; 
 }
-$puntuacio = $_SESSION['puntuacio'];
-$totalPreguntes = count($_SESSION['preguntes']);
-$resultats = $_SESSION['resultats'];
 
-session_unset();
+$respuestasCliente = [];
+foreach($respostes as $respostes2) {
+    $respuestasCliente[] = $respostes2["resposta"];
+}
+
+    $verificacion = [];
+for($i = 0; $i < count($respostes); $i++){
+    if($respuestasCliente[$i] == $respostesrCorrectes[$i]){
+        $verificacion[] = true;
+    }else{
+        $verificacion[] = false;
+    }
+}
+$envioVerificacion = [];
+foreach ($respostes as $respostesCorr) {
+    $envioVerificacion[] = array(
+        'id' => $respostesCorr['id'],
+        'correcte' => $verificacion
+    );
+}
+echo json_encode($envioVerificacion);
 ?>

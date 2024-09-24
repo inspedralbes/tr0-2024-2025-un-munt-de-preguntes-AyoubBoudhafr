@@ -5,28 +5,32 @@ body{
 button{
     background-color:  #969091;
     color: #e0e4ce;
-    border: none;
+    border: 0;
     border-radius: 5px;
     cursor: pointer;
     margin-left: 3%;
     margin-right: 3%;
-    size: 200px;
+    font-size: 20px;
 }
 button:hover{
     background-color: #454545;
 }
 h3{
     color: #e0e4ce;
+    font-size: 30px;
 }
 h2{
     color: #e0e4ce;
+    font-size: 40px;
 }
 h1{
     color: #e0e4ce;
+    font-size: 50px;
 }   
 .reset{
     margin-top: 3%;
 }
 
 .resp{
+    margin-top: 10px;
 }
