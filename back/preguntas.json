@@ -29,24 +29,24 @@
         "id": 3,
         "pregunta": "Què has de fer quan et trobes amb un semàfor en vermell?",
         "respostes": [
-          {"id": 1, "etiqueta": "Parar"},
-          {"id": 2, "etiqueta": "Continuar amb precaució"},
-          {"id": 3, "etiqueta": "Accelerar"},
-          {"id": 4, "etiqueta": "Reduir la velocitat"}
+          {"id": 1, "etiqueta": "Continuar amb precaució"},
+          {"id": 2, "etiqueta": "Accelerar"},
+          {"id": 3, "etiqueta": "Reduir la velocitat"},
+          {"id": 4, "etiqueta": "Parar"}
         ],
-        "resposta_correcta": 1,
+        "resposta_correcta": 4,
         "imatge": "../web/img/semaforo.jpg"
       },
       {
         "id": 4,
         "pregunta": "Quina és la norma general per avançar a altres vehicles?",
         "respostes": [
-          {"id": 1, "etiqueta": "Avançar pel costat esquerre"},
-          {"id": 2, "etiqueta": "Avançar pel costat dret"},
+          {"id": 1, "etiqueta": "Avançar pel costat dret"},
+          {"id": 2, "etiqueta": "Avançar pel costat esquerre"},
           {"id": 3, "etiqueta": "Avançar pel mig de la carretera"},
           {"id": 4, "etiqueta": "No es pot avançar"}
         ],
-        "resposta_correcta": 1,
+        "resposta_correcta": 2,
         "imatge": "../web/img/adelantamiento.jpg"
       },
       {
@@ -89,12 +89,12 @@
         "id": 8,
         "pregunta": "En quines condicions és obligatori utilitzar el casc?",
         "respostes": [
-          {"id": 1, "etiqueta": "Quan condueixes una moto o ciclomotor"},
-          {"id": 2, "etiqueta": "Quan condueixes un cotxe"},
-          {"id": 3, "etiqueta": "Quan condueixes una bicicleta només de nit"},
+          {"id": 1, "etiqueta": "Quan condueixes un cotxe"},
+          {"id": 2, "etiqueta": "Quan condueixes una bicicleta només de nit"},
+          {"id": 3, "etiqueta": "Quan condueixes una moto o ciclomotor"},
           {"id": 4, "etiqueta": "Quan condueixes un camió"}
         ],
-        "resposta_correcta": 1,
+        "resposta_correcta": 3,
         "imatge": "../web/img/casco.jpg"
       },
       {
@@ -137,12 +137,12 @@
         "id": 12,
         "pregunta": "Quina norma s'ha de seguir en una intersecció sense senyalització?",
         "respostes": [
-          {"id": 1, "etiqueta": "Respectar la prioritat de la dreta"},
-          {"id": 2, "etiqueta": "Sempre tenir prioritat"},
-          {"id": 3, "etiqueta": "Prioritzar el trànsit del carrer principal"},
-          {"id": 4, "etiqueta": "Aturar-se i comprovar els altres vehicles"}
+          {"id": 1, "etiqueta": "Sempre tenir prioritat"},
+          {"id": 2, "etiqueta": "Prioritzar el trànsit del carrer principal"},
+          {"id": 3, "etiqueta": "Aturar-se i comprovar els altres vehicles"},
+          {"id": 4, "etiqueta": "Respectar la prioritat de la dreta"}
         ],
-        "resposta_correcta": 1,
+        "resposta_correcta": 4,
         "imatge": "../web/img/interseccio.jpg"
       },
       {
