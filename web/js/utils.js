@@ -2,8 +2,6 @@ let dataGlobal;
 let arrayRespostes = new Array(10); 
 let arrayIds = [];
 let respostesGlobal = [];
-let pregActual;
-let salida = '';
 obtPreg();
 
 function obtPreg() {
@@ -12,7 +10,7 @@ function obtPreg() {
         .then(resp => resp.json())
         .then(data => {
             dataGlobal = data;
-            pregActual = 0;
+            let pregActual = 0;
             mostrarPregunta(dataGlobal, pregActual);
             data.preguntes.forEach(preg => {
                 arrayIds.push(preg.id);
@@ -21,24 +19,24 @@ function obtPreg() {
 }
 
 function mostrarPregunta(data, pregActual) {
-    salida = '';
+    let salida = '';
     let totPreguntas = data.preguntes;
 
     if (pregActual < totPreguntas.length) {
         let pregunta = totPreguntas[pregActual].pregunta;
-        salida += `<h2>Pregunta número ${pregActual + 1}</h2>`;
-        salida += `<h3>${pregunta}</h3>`;
-        salida += `<img style="height: 200px" src="${totPreguntas[pregActual].imatge}">`;
+        salida += '<h2>Pregunta número '+(pregActual + 1)+'</h2>';
+        salida += '<h3>'+pregunta+'</h3>';
+        salida += '<img style="height: 200px" src="'+totPreguntas[pregActual].imatge+'">';
 
         let respuestas = totPreguntas[pregActual].respostes;
 
         respuestas.forEach((resp, j) => {
-            salida += `<br><button class="resp" onclick="siguientePregunta(${pregActual}, ${j + 1})">${resp.etiqueta}</button>`;
+            salida += '<br><button class="resp" onclick="siguientePregunta('+pregActual+', '+(j + 1)+')">'+resp.etiqueta+'</button>';
         });
         
-        salida += `<br><button onclick="anterior(${pregActual})">Anterior</button>`;
-        salida += `<button class="reset" onclick="resetTest()">Restart</button>`;
-        salida += `<button onclick="siguiente(${pregActual})">Siguiente</button>`;
+        salida += '<br><button onclick="anterior('+pregActual+')">Anterior</button>';
+        salida += '<button class="reset" onclick="resetTest()">Restart</button>';
+        salida += '<button onclick="siguiente('+pregActual+')">Siguiente</button>';
         
         document.getElementById("test").innerHTML = salida;
     } else {
@@ -47,25 +45,31 @@ function mostrarPregunta(data, pregActual) {
 }
 
 function siguientePregunta(pregActual, respuesta) {
-    arrayRespostes[pregActual] = respuesta;     
-    mostrarPregunta(dataGlobal, pregActual + 1); 
+    arrayRespostes[pregActual] = respuesta;   
+    pregActual++;  
+    mostrarPregunta(dataGlobal, pregActual); 
 }
 
 function resetTest() {
-    arrayRespostes = new Array(10); 
+    document.getElementById('imprime').innerHTML = '';
+    arrayRespostes = new Array(10);
     arrayIds = [];
     obtPreg(); 
 }
 
 function anterior(pregActual) {
-    if (pregActual > 0) { 
-        mostrarPregunta(dataGlobal, pregActual - 1);
+    if (pregActual > 0) {
+        pregActual--;
+        mostrarPregunta(dataGlobal, pregActual);
     }
 }
 
 function siguiente(pregActual) {
     if (pregActual + 1 < dataGlobal.preguntes.length) { 
-        mostrarPregunta(dataGlobal, pregActual + 1);
+        pregActual++;
+        mostrarPregunta(dataGlobal, pregActual);
+    }else{
+        finalitza();
     }
 }
 
@@ -106,6 +110,7 @@ function imprimirResultados() {
             salida2 += '<h4>Resposta '+(i+1)+': Incorrecte</h4>';
         }
     }
-    document.getElementById('test').innerHTML = ''; 
+    document.getElementById('test').innerHTML = '';
+    salida2 += '<button class="resp" onclick="resetTest()">Restart</button>'
     document.getElementById("imprime").innerHTML = salida2;
 }
