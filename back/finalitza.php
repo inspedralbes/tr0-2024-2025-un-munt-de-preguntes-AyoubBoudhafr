@@ -18,7 +18,7 @@ foreach($respostes as $respostes2) {
     $respuestasCliente[] = $respostes2["resposta"];
 }
 
-    $verificacion = [];
+$verificacion = [];
 for($i = 0; $i < count($respostes); $i++){
     if($respuestasCliente[$i] == $respostesrCorrectes[$i]){
         $verificacion[] = true;
