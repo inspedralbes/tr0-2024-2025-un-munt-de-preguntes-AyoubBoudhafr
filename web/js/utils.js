@@ -2,6 +2,7 @@ let dataGlobal;
 let arrayRespostes = new Array(10); 
 let arrayIds = [];
 let respostesGlobal = [];
+let comienzoCrono; 
 obtPreg();
 
 function obtPreg() {
@@ -15,6 +16,7 @@ function obtPreg() {
             data.preguntes.forEach(preg => {
                 arrayIds.push(preg.id);
             });
+            comienzoCrono = new Date(); 
         });
 }
 
@@ -24,19 +26,19 @@ function mostrarPregunta(data, pregActual) {
 
     if (pregActual < totPreguntas.length) {
         let pregunta = totPreguntas[pregActual].pregunta;
-        salida += '<h2>Pregunta número '+(pregActual + 1)+'</h2>';
-        salida += '<h3>'+pregunta+'</h3>';
-        salida += '<img style="height: 200px" src="'+totPreguntas[pregActual].imatge+'">';
+        salida += '<h2>Pregunta número ' + (pregActual + 1) + '</h2>';
+        salida += '<h3>' + pregunta + '</h3>';
+        salida += '<img style="height: 200px" src="' + totPreguntas[pregActual].imatge + '">';
 
         let respuestas = totPreguntas[pregActual].respostes;
 
         respuestas.forEach((resp, j) => {
-            salida += '<br><button class="resp" onclick="siguientePregunta('+pregActual+', '+(j + 1)+')">'+resp.etiqueta+'</button>';
+            salida += '<br><button class="resp" onclick="siguientePregunta(' + pregActual + ', ' + (j + 1) + ')">' + resp.etiqueta + '</button>';
         });
         
-        salida += '<br><button onclick="anterior('+pregActual+')">Anterior</button>';
+        salida += '<br><button onclick="anterior(' + pregActual + ')">Anterior</button>';
         salida += '<button class="reset" onclick="resetTest()">Restart</button>';
-        salida += '<button onclick="siguiente('+pregActual+')">Siguiente</button>';
+        salida += '<button onclick="siguiente(' + pregActual + ')">Siguiente</button>';
         
         document.getElementById("test").innerHTML = salida;
     } else {
@@ -68,7 +70,7 @@ function siguiente(pregActual) {
     if (pregActual + 1 < dataGlobal.preguntes.length) { 
         pregActual++;
         mostrarPregunta(dataGlobal, pregActual);
-    }else{
+    } else {
         finalitza();
     }
 }
@@ -96,21 +98,32 @@ function finalitza() {
 
 function imprimirResultados() {
     let salida2 = '';
-    let count=0;
+    let count = 0;
     for (let i = 0; i < respostesGlobal.length; i++) {
-        if(respostesGlobal[i].correcte == true){
+        if (respostesGlobal[i].correcte === true) {
             count++;
         }
     }
-    salida2 += '<h1>Has fet '+count+' respostes correctes!';
+    
+    let finTemporizador = new Date();
+    let tiempoSeg = Math.floor((finTemporizador - comienzoCrono) / 1000); 
+
+    salida2 += '<h1>Has fet ' + count + ' respostes correctes!</h1>';
+    if(tiempoSeg<59){
+        salida2 += '<h2>Temps total: ' + tiempoSeg + ' segons</h2>'; 
+    }else{
+        let tiempo = parseInt(tiempoSeg/60);
+        let residuo = tiempoSeg%60;
+        salida2 += '<h2>Temps total: ' + tiempo + ' minuts i '+ residuo +' segons</h2>'; 
+    }
     for (let i = 0; i < respostesGlobal.length; i++) {
-        if(respostesGlobal[i].correcte == true){
-            salida2 += '<h4>Resposta '+(i+1)+': Correcte</h4>';
-        }else{
-            salida2 += '<h4>Resposta '+(i+1)+': Incorrecte</h4>';
+        if (respostesGlobal[i].correcte === true) {
+            salida2 += '<h4>Resposta ' + (i + 1) + ': Correcte</h4>';
+        } else {
+            salida2 += '<h4>Resposta ' + (i + 1) + ': Incorrecte</h4>';
         }
     }
     document.getElementById('test').innerHTML = '';
-    salida2 += '<button class="resp" onclick="resetTest()">Restart</button>'
+    salida2 += '<button class="resp" onclick="resetTest()">Restart</button>';
     document.getElementById("imprime").innerHTML = salida2;
 }
