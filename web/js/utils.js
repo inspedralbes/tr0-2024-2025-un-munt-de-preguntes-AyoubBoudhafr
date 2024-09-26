@@ -1,4 +1,3 @@
-
 let dataGlobal;
 let arrayRespostes = new Array(10); 
 let arrayIds = [];
@@ -7,7 +6,7 @@ let comienzoCrono;
 obtPreg();
 
 function obtPreg() {
-    let json = '/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/getPreguntes.php';
+    let json = "/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/getPreguntes.php";
     fetch(json)
         .then(resp => resp.json())
         .then(data => {
@@ -23,14 +22,10 @@ function obtPreg() {
 
 function mostrarPregunta(data, pregActual) {
     let salida = '';
-    let salida = '';
     let totPreguntas = data.preguntes;
 
     if (pregActual < totPreguntas.length) {
         let pregunta = totPreguntas[pregActual].pregunta;
-        salida += '<h2>Pregunta número ' + (pregActual + 1) + '</h2>';
-        salida += '<h3>' + pregunta + '</h3>';
-        salida += '<img style="height: 200px" src="' + totPreguntas[pregActual].imatge + '">';
         salida += '<h2>Pregunta número ' + (pregActual + 1) + '</h2>';
         salida += '<h3>' + pregunta + '</h3>';
         salida += '<img style="height: 200px" src="' + totPreguntas[pregActual].imatge + '">';
@@ -39,17 +34,13 @@ function mostrarPregunta(data, pregActual) {
 
         respuestas.forEach((resp, j) => {
             salida += '<br><button class="resp" onclick="siguientePregunta(' + pregActual + ', ' + (j + 1) + ')">' + resp.etiqueta + '</button>';
-            salida += '<br><button class="resp" onclick="siguientePregunta(' + pregActual + ', ' + (j + 1) + ')">' + resp.etiqueta + '</button>';
         });
         
         salida += '<br><button onclick="anterior(' + pregActual + ')">Anterior</button>';
         salida += '<button class="reset" onclick="resetTest()">Restart</button>';
         salida += '<button onclick="siguiente(' + pregActual + ')">Siguiente</button>';
-        salida += '<br><button onclick="anterior(' + pregActual + ')">Anterior</button>';
-        salida += '<button class="reset" onclick="resetTest()">Restart</button>';
-        salida += '<button onclick="siguiente(' + pregActual + ')">Siguiente</button>';
         
-        document.getElementById('test').innerHTML = salida;
+        document.getElementById("test").innerHTML = salida;
     } else {
         finalitza(arrayRespostes);
     }
@@ -90,25 +81,26 @@ function finalitza() {
         results.push({id: id, resposta: arrayRespostes[i]})
     });
     
-    fetch('/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/finalitza.php', {
+    fetch("/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/finalitza.php", {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(results)
     })
     .then(response => response.json())
     .then(data => {
-        imprimirResultados(data);
-    });
+        respostesGlobal = data;
+        imprimirResultados();
+    })
 }
 
-function imprimirResultados(respostes) {
+function imprimirResultados() {
     let salida2 = '';
-    let count=0;
+    let count = 0;
     for (let i = 0; i < respostesGlobal.length; i++) {
-        if(respostesGlobal[i].correcte == true){
+        if (respostesGlobal[i].correcte === true) {
             count++;
         }
     }
