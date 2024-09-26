@@ -1,14 +1,17 @@
 <?php
-session_start();
+$servername = "localhost";
+$database = "Ayoub";
+$username = "Ayoub";
+$password = "1234";
 
-header('Content-Type: application/json');
+$conn = mysqli_connect($servername, $username, $password, $database);
 
-$json = file_get_contents("preguntas.json");
-$array_preguntas = json_decode($json, true)['preguntes'];
+$result = mysqli_query($conn,"SELECT pregunta FROM preguntes");
+
+$array_preguntas = mysqli_fetch_array($result, MYSQL_BOTH);
 
 shuffle($array_preguntas);
 $preguntasDesordenadas = array_slice($array_preguntas, 0, 10);
-
 $totRespostes = [];
 foreach ($preguntasDesordenadas as $senseResposta) {
     $totRespostes[] = array(
@@ -20,5 +23,5 @@ foreach ($preguntasDesordenadas as $senseResposta) {
 }
 
 $totRespostes2 = json_encode(["preguntes" => $totRespostes]);
-echo $totRespostes2;
+// echo $totRespostes2;
 ?>
