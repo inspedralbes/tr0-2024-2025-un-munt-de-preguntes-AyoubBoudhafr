@@ -6,22 +6,27 @@ $password = "1234";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-$result = mysqli_query($conn,"SELECT pregunta FROM preguntes");
-
-$array_preguntas = mysqli_fetch_array($result, MYSQL_BOTH);
-
-shuffle($array_preguntas);
-$preguntasDesordenadas = array_slice($array_preguntas, 0, 10);
-$totRespostes = [];
-foreach ($preguntasDesordenadas as $senseResposta) {
-    $totRespostes[] = array(
-        'id' => $senseResposta['id'],
-        'pregunta' => $senseResposta['pregunta'],
-        'respostes' => $senseResposta['respostes'],
-        'imatge' => $senseResposta['imatge'],
-    );
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-$totRespostes2 = json_encode(["preguntes" => $totRespostes]);
-// echo $totRespostes2;
-?>
+$resultRespostes = mysqli_query($conn, "SELECT * FROM preguntes"); 
+$info = $resultRespostes->fetch_all(MYSQLI_ASSOC);
+shuffle($info);
+$preguntasSeleccionadas = array_slice($info, 0, 10);
+$arrayEnvio = [];
+
+foreach ($preguntasSeleccionadas as $preguntes) {
+    $arrayEnvio[] = [
+        "pregunta" => $preguntes["pregunta"],
+        "imatge" => $preguntes["imatge"],
+        "opciones" => [
+            $preguntes["pregunta_1"],
+            $preguntes["pregunta_2"],
+            $preguntes["pregunta_3"],
+            $preguntes["pregunta_4"],
+        ]
+    ];
+}
+
+echo json_encode($arrayEnvio);

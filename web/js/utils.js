@@ -13,7 +13,7 @@ function obtPreg() {
             dataGlobal = data;
             let pregActual = 0;
             mostrarPregunta(dataGlobal, pregActual);
-            data.preguntes.forEach(preg => {
+            data.forEach(preg => {
                 arrayIds.push(preg.id);
             });
             comienzoCrono = new Date(); 
@@ -22,7 +22,7 @@ function obtPreg() {
 
 function mostrarPregunta(data, pregActual) {
     let salida = '';
-    let totPreguntas = data.preguntes;
+    let totPreguntas = data;
 
     if (pregActual < totPreguntas.length) {
         let pregunta = totPreguntas[pregActual].pregunta;
@@ -30,10 +30,10 @@ function mostrarPregunta(data, pregActual) {
         salida += '<h3>' + pregunta + '</h3>';
         salida += '<img style="height: 200px" src="' + totPreguntas[pregActual].imatge + '">';
 
-        let respuestas = totPreguntas[pregActual].respostes;
+        let respuestas = totPreguntas[pregActual].opciones;
 
         respuestas.forEach((resp, j) => {
-            salida += '<br><button class="resp" onclick="siguientePregunta(' + pregActual + ', ' + (j + 1) + ')">' + resp.etiqueta + '</button>';
+            salida += '<br><button class="resp" onclick="siguientePregunta(' + pregActual + ', ' + (j + 1) + ')">' + resp + '</button>';
         });
         
         salida += '<br><button onclick="anterior(' + pregActual + ')">Anterior</button>';
@@ -67,7 +67,7 @@ function anterior(pregActual) {
 }
 
 function siguiente(pregActual) {
-    if (pregActual + 1 < dataGlobal.preguntes.length) { 
+    if (pregActual + 1 < dataGlobal.length) { 
         pregActual++;
         mostrarPregunta(dataGlobal, pregActual);
     } else {
@@ -93,7 +93,7 @@ function finalitza() {
     .then(data => {
         respostesGlobal = data;
         imprimirResultados();
-    })
+    });
 }
 
 function imprimirResultados() {
@@ -109,13 +109,14 @@ function imprimirResultados() {
     let tiempoSeg = Math.floor((finTemporizador - comienzoCrono) / 1000); 
 
     salida2 += '<h1>Has fet ' + count + ' respostes correctes!</h1>';
-    if(tiempoSeg<59){
+    if(tiempoSeg < 59){
         salida2 += '<h2>Temps total: ' + tiempoSeg + ' segons</h2>'; 
-    }else{
-        let tiempo = parseInt(tiempoSeg/60);
-        let residuo = tiempoSeg%60;
-        salida2 += '<h2>Temps total: ' + tiempo + ' minuts i '+ residuo +' segons</h2>'; 
+    } else {
+        let tiempo = parseInt(tiempoSeg / 60);
+        let residuo = tiempoSeg % 60;
+        salida2 += '<h2>Temps total: ' + tiempo + ' minuts i ' + residuo + ' segons</h2>'; 
     }
+    
     for (let i = 0; i < respostesGlobal.length; i++) {
         if (respostesGlobal[i].correcte === true) {
             salida2 += '<h4>Resposta ' + (i + 1) + ': Correcte</h4>';
@@ -123,6 +124,7 @@ function imprimirResultados() {
             salida2 += '<h4>Resposta ' + (i + 1) + ': Incorrecte</h4>';
         }
     }
+    
     document.getElementById('test').innerHTML = '';
     salida2 += '<button class="resp" onclick="resetTest()">Restart</button>';
     document.getElementById("imprime").innerHTML = salida2;
