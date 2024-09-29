@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 
-$jsonjs = file_get_contents("../web/js/utils.js");
+$jsonjs = file_get_contents('php://input');
 $respostes = json_decode($jsonjs, true);
 
 $json = file_get_contents("preguntas.json");
@@ -18,7 +18,7 @@ foreach($respostes as $respostes2) {
     $respuestasCliente[] = $respostes2["resposta"];
 }
 
-    $verificacion = [];
+$verificacion = [];
 for($i = 0; $i < count($respostes); $i++){
     if($respuestasCliente[$i] == $respostesrCorrectes[$i]){
         $verificacion[] = true;
@@ -26,12 +26,13 @@ for($i = 0; $i < count($respostes); $i++){
         $verificacion[] = false;
     }
 }
+
 $envioVerificacion = [];
-foreach ($respostes as $respostesCorr) {
+foreach ($respostes as $i => $respostesCorr) {
     $envioVerificacion[] = array(
         'id' => $respostesCorr['id'],
-        'correcte' => $verificacion
+        'correcte' => $verificacion[$i]
     );
 }
-echo json_encode($envioVerificacion);
+    echo json_encode($envioVerificacion);
 ?>

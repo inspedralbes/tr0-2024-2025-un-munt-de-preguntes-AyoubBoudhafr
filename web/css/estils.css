@@ -15,6 +15,9 @@ button{
 button:hover{
     background-color: #454545;
 }
+h4{
+    color: #e0e4ce;
+}
 h3{
     color: #e0e4ce;
     font-size: 30px;
