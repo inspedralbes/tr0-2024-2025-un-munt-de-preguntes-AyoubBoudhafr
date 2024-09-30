@@ -1,10 +1,12 @@
 <?php
+session_start();
 $servername = "localhost";
-$database = "ayoub";
+$database = "Ayoub";
 $username = "Ayoub";
 $password = "1234";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
+
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -12,6 +14,9 @@ if ($conn->connect_error) {
 
 $resultRespostes = mysqli_query($conn, "SELECT * FROM preguntes"); 
 $info = $resultRespostes->fetch_all(MYSQLI_ASSOC);
+
+$_SESSION['info']= $info;
+
 shuffle($info);
 $preguntasSeleccionadas = array_slice($info, 0, 10);
 $arrayEnvio = [];
@@ -26,11 +31,12 @@ foreach ($preguntasSeleccionadas as $preguntes) {
             $preguntes["pregunta_2"],
             $preguntes["pregunta_3"],
             $preguntes["pregunta_4"],
-        ]
-    ];
-}
+            ]
+        ];
+    }
+    $_SESSION['preguntes'] = $arrayEnvio;
 
-echo json_encode($arrayEnvio);
+echo json_encode($_SESSION['preguntes']);
 // CREATE TABLE preguntes (
 //     id INT AUTO_INCREMENT PRIMARY KEY,
 //     pregunta TEXT NOT NULL,
