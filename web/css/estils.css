@@ -1,10 +1,11 @@
-body{
+body {
     text-align: center;
-    background-color: #574d4f;
+    background-color: #283747; 
 }
-button{
-    background-color:  #969091;
-    color: #e0e4ce;
+
+button {
+    background-color: #E2E8CE; 
+    color: #2C3E50;
     border: 0;
     border-radius: 5px;
     cursor: pointer;
@@ -12,46 +13,59 @@ button{
     margin-right: 3%;
     font-size: 20px;
 }
-button:hover{
-    background-color: #454545;
+
+button:hover {
+    background-color: #ACBFA4; 
 }
-h4{
-    color: #e0e4ce;
+
+h4 {
+    color: #E2E8CE;
 }
-h3{
-    color: #e0e4ce;
-    font-size: 30px;
+
+h3 {
+    color: #E2E8CE;
+    font-size: 23px;
 }
-h2{
-    color: #e0e4ce;
+
+h2 {
+    color: #E2E8CE;
     font-size: 40px;
 }
-h1{
-    color: #e0e4ce;
+
+h1 {
+    color: #E2E8CE;
     font-size: 50px;
-}   
-.reset{
+}
+
+.reset {
     margin-top: 3%;
 }
 
-.resp{
+.resp {
     margin-top: 10px;
 }
+
 #inicio > button {
     width: 300px;  
     height: 50px;   
     font-size: 25px;
     margin-top: 10px;
 }
-p{
-    color: #e0e4ce;
+
+p {
+    color: #E2E8CE; 
     font-size: 20px;
 }
-#coche{
+
+#coche {
     height: 300px;
     align-items: center;
     display: block;  
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.resp img {
+    height: 200px;
 }
