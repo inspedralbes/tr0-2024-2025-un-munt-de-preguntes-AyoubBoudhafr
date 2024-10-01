@@ -151,4 +151,3 @@ function imprimirResultados() {
     document.getElementById("imprime").innerHTML = salida2;
     document.getElementById('restart').addEventListener('click', resetTest);
 }
-
