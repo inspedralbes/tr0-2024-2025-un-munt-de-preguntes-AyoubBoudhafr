@@ -9,7 +9,7 @@ document.getElementById('començar').addEventListener('click', function() {
     obtPreg(); 
 });
 function obtPreg() {
-    let json = "/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/getPreguntes.php";
+    let json = "./../back/getPreguntes.php";
     fetch(json)
         .then(resp => resp.json())
         .then(data => {
@@ -97,7 +97,7 @@ function finalitza() {
         results.push({id: id, resposta: arrayRespostes[i]});
     });
     
-    fetch("/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/back/finalitza.php", {
+    fetch("./../back/finalitza.php", {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
