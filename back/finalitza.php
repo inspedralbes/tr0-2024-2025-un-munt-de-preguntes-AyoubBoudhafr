@@ -55,4 +55,3 @@ foreach ($respostes as $i => $respostaCliente) {
 
 $_SESSION['Respostes'] = $envioVerificacion;
 echo json_encode($_SESSION['Respostes']);
-mysqli_close($conn);
