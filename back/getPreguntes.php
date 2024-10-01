@@ -1,26 +1,31 @@
 <?php
 session_start();
-$servername = "localhost";
-$database = "Ayoub";
-$username = "Ayoub";
-$password = "1234";
+// include("conexio.php");
+// hace lo mismo que include pero es obligatorio, sino salta un error
+// el once hace que solo se ejecute 1 vez
+require_once("conexio.php");
 
+// conecta con la base de datos
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-
+// lanza error si no se conecta con una base de datos
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// saco lo que hay en la base de datos y lo transformo en array
 $resultRespostes = mysqli_query($conn, "SELECT * FROM preguntes"); 
 $info = $resultRespostes->fetch_all(MYSQLI_ASSOC);
 
+// guardo la informacion en la session
 $_SESSION['info']= $info;
 
+// mezclo el array y saco los 10 primeros del array mezlado
 shuffle($info);
 $preguntasSeleccionadas = array_slice($info, 0, 10);
-$arrayEnvio = [];
 
+// creo un json para el front con todo menos las respuestas correctas
+$arrayEnvio = [];
 foreach ($preguntasSeleccionadas as $preguntes) {
     $arrayEnvio[] = [
         "id" => $preguntes["id"],
@@ -34,9 +39,14 @@ foreach ($preguntasSeleccionadas as $preguntes) {
             ]
         ];
     }
-    $_SESSION['preguntes'] = $arrayEnvio;
 
+// guardo este json en la session
+$_SESSION['preguntes'] = $arrayEnvio;
+
+// envio el json sin respuestas correctas al front
 echo json_encode($_SESSION['preguntes']);
+
+// cierro conexion con base de datos
 mysqli_close($conn);
 // CREATE TABLE preguntes (
 //     id INT AUTO_INCREMENT PRIMARY KEY,
