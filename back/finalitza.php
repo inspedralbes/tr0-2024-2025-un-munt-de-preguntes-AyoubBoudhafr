@@ -3,16 +3,13 @@ session_start();
 
 header('Content-Type: application/json');
 
-// Recibir y decodificar el JSON
 $jsonjs = file_get_contents('php://input');
 $respostes = json_decode($jsonjs, true);
 
-// Verificación de que el JSON fue decodificado correctamente
 if ($respostes === null) {
     die(json_encode(['error' => 'Error al decodificar el JSON.']));
 }
 
-// Verificar que la sesión contiene la variable 'info'
 if (!isset($_SESSION['info'])) {
     die(json_encode(['error' => 'No hay información en la sesión.']));
 }
@@ -22,19 +19,18 @@ $info = $_SESSION['info'];
 $respostesCorrectes = [];
 $totesIds = [];
 
-// Buscar respuestas correctas en $info comparando con el ID de $respostes
 for ($i = 0; $i < count($respostes); $i++) {
     for ($j = 0; $j < count($info); $j++) {
         if (isset($info[$j]["id"]) && $info[$j]["id"] == $respostes[$i]["id"]) {
             $respostesCorrectes[] = $info[$j]["resposta_correcta"];
-            $totesIds[] = $j;  // Cambiar a $j para usar el índice real del array $info
+            $totesIds[] = $j; 
         }
     }
 }
 
 $respuestasCliente = [];
 foreach ($respostes as $respostaCliente) {
-    // Versión más simple
+    
     $respuestasCliente[] = $respostaCliente["resposta"];
 }
 
@@ -73,9 +69,7 @@ foreach ($respostes as $i => $respostaCliente) {
     ];
 }
 
-// Almacenar el resultado en la sesión
 $_SESSION['Respostes'] = $envioVerificacion;
 
-// Enviar el resultado como respuesta JSON
 echo json_encode($_SESSION['Respostes']);
 ?>
