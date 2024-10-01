@@ -26,7 +26,11 @@ foreach($respostes as $respostaCliente) {
 
 $verificacion = [];
 for($i = 0; $i < count($respuestasCliente); $i++){
-    $verificacion[] = $respuestasCliente[$i] == $respostesCorrectes[$i];
+    if($respuestasCliente[$i] == $respostesCorrectes[$i]){
+        $verificacion[] = true;
+    } else {
+        $verificacion[] = false;
+    }
 }
 
 $debugObject = [];
@@ -51,3 +55,4 @@ foreach ($respostes as $i => $respostaCliente) {
 
 $_SESSION['Respostes'] = $envioVerificacion;
 echo json_encode($_SESSION['Respostes']);
+mysqli_close($conn);
