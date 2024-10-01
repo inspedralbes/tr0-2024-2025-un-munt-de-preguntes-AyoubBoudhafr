@@ -37,6 +37,7 @@ foreach ($preguntasSeleccionadas as $preguntes) {
     $_SESSION['preguntes'] = $arrayEnvio;
 
 echo json_encode($_SESSION['preguntes']);
+mysqli_close($conn);
 // CREATE TABLE preguntes (
 //     id INT AUTO_INCREMENT PRIMARY KEY,
 //     pregunta TEXT NOT NULL,
