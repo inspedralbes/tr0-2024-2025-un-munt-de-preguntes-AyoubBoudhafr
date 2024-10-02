@@ -3,9 +3,24 @@ let arrayRespostes = new Array(10);
 let arrayIds = [];
 let respostesGlobal = [];
 let comienzoCrono; 
-
+const contenidoInicial = `
+    <header>
+        <button id="admin">Admin DB</button>
+        <button id="sesion">Iniciar sesion</button>
+    </header>
+    <div id="inicio" style="text-align: center; margin: 20px;">
+        <h1>Benvingut al nostre Test!</h1>
+        <p>Posa a prova els teus coneixements amb les nostres preguntes.</p>
+        <img id="coche" src="./img/interrogante2.png">
+        <button id="començar">Començar Test</button>
+    </div>
+`;
+document.getElementById('app').innerHTML = contenidoInicial;
+document.getElementById('admin').addEventListener('click', function() {
+    window.location.href = 'admin.html';
+});
 document.getElementById('començar').addEventListener('click', function() {
-    document.getElementById('inicio').style.display = 'none';
+    document.getElementById('inicio').innerHTML = '';
     obtPreg(); 
 });
 function obtPreg() {
