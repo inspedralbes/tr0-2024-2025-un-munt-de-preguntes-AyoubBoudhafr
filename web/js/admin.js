@@ -95,6 +95,7 @@ function mostrarTodo(data) {
             })
             .then(resp => resp.json())
             .then(info => {
+                console.log(info);
                 fetch("./../back/info.php")
                 .then(resp => resp.json())
                 .then(data => {
