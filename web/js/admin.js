@@ -6,6 +6,7 @@ const ventanaAdmin = `
     <button id="crear">Crear pregunta</button>
     <div id="formularioPregunta" class="hidden">
         <h4>Agregar Nueva Pregunta</h4> 
+        <input type="text" id="id" placeholder="Id de la pregunta" required>
         <input type="text" id="nuevaPregunta" placeholder="Escribe la pregunta" required>
         <input type="text" id="opcion1" placeholder="Opción 1" required>
         <input type="text" id="opcion2" placeholder="Opción 2" required>
@@ -29,6 +30,7 @@ document.getElementById('crear').addEventListener('click', function() {
 });
 
 document.getElementById('guardarPregunta').addEventListener('click', function() {
+    const id = document.getElementById('id').value;
     const nuevaPregunta = document.getElementById('nuevaPregunta').value;
     const opcion1 = document.getElementById('opcion1').value;
     const opcion2 = document.getElementById('opcion2').value;
@@ -37,12 +39,13 @@ document.getElementById('guardarPregunta').addEventListener('click', function() 
     const respuestaCorrecta = document.getElementById('respuestaCorrecta').value;
 
     const json = {
+        id: id,
         pregunta: nuevaPregunta,
         opciones: [opcion1, opcion2, opcion3, opcion4],
         respuesta_correcta: respuestaCorrecta
     };
 
-    fetch("./../back/guardar.php", {
+    fetch("./../back/crear.php", {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -59,7 +62,6 @@ document.getElementById('guardarPregunta').addEventListener('click', function() 
         });
     });
 });
-
 fetch("./../back/info.php")
     .then(resp => resp.json())
     .then(data => {
@@ -99,6 +101,31 @@ function mostrarTodo(data) {
                 fetch("./../back/info.php")
                 .then(resp => resp.json())
                 .then(data => {
+                    mostrarTodo(data);
+                });
+            });
+        });
+    });
+    let actaulizarPregunta = document.querySelectorAll('.actualizar');
+    actaulizarPregunta.forEach(boton => {
+        boton.addEventListener('click', function() {
+            let idPreguntaActalitza = this.getAttribute('data-id');
+            let json2 = { id: idPreguntaActalitza};
+            fetch("./../back/actualizar.php", {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(json2)
+            })
+            .then(resp => resp.json())
+            .then(infoActualitza => {
+                console.log(infoActualitza);
+                fetch("./../back/info.php")
+                .then(resp => resp.json())
+                .then(data => {
+                    document.getElementById('volver').innerHTML = '';
                     mostrarTodo(data);
                 });
             });
