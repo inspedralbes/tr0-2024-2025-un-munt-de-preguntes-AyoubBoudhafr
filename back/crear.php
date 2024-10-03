@@ -1,5 +1,5 @@
 <?php
-require_once('conexio.php');
+require_once('migrate.php');
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 

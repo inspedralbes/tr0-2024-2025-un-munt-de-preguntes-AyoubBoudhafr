@@ -3,7 +3,7 @@ session_start();
 // include("conexio.php");
 // hace lo mismo que include pero es obligatorio, sino salta un error
 // el once hace que solo se ejecute 1 vez
-require_once("conexio.php");
+require_once("migrate.php");
 
 // conecta con la base de datos
 $conn = mysqli_connect($servername, $username, $password, $database);
