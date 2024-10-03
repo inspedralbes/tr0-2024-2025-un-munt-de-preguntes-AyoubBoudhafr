@@ -12,7 +12,7 @@ $id = $data['id'];
 
 if ($id) {
     $stmt = $conn->prepare("DELETE FROM preguntes WHERE id = ?");
-    $stmt->bind_param("i", $id); // "i" indica que el parámetro es un entero
+    $stmt->bind_param("i", $id); 
 
     if ($stmt->execute()) {
         echo json_encode(["success" => true, "message" => "Pregunta borrada con éxito."]);

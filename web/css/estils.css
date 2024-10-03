@@ -61,7 +61,7 @@ button.resp {
     margin-top: 40px;
 }
 #anterior, #siguiente, #reset{
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 130px;
     margin-right: 130px;
     width: 160px;
@@ -85,4 +85,10 @@ img{
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+}
+.hidden {
+    display: none;
+}
+#guardarPregunta{
+    margin-top: 20px;
 }

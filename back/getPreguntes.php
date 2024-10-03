@@ -47,16 +47,16 @@ $_SESSION['preguntes'] = $arrayEnvio;
 echo json_encode($_SESSION['preguntes']);
 
 // cierro conexion con base de datos
-mysqli_close($conn);
+// mysqli_close($conn);
 // CREATE TABLE preguntes (
 //     id INT AUTO_INCREMENT PRIMARY KEY,
 //     pregunta TEXT NOT NULL,
-//     imatge VARCHAR(255) NOT NULL,
+//     imatge VARCHAR(255),
 //     resposta_correcta INT NOT NULL,
-//     pregunta_1 VARCHAR(255) NOT NULL,
-//     pregunta_2 VARCHAR(255) NOT NULL,
-//     pregunta_3 VARCHAR(255) NOT NULL,
-//     pregunta_4 VARCHAR(255) NOT NULL 
+//     pregunta_1 VARCHAR(255),
+//     pregunta_2 VARCHAR(255),
+//     pregunta_3 VARCHAR(255),
+//     pregunta_4 VARCHAR(255) 
 // );
 // INSERT INTO preguntes (id, pregunta, imatge, resposta_correcta, pregunta_1, pregunta_2, pregunta_3, pregunta_4) VALUES
 // (1, 'Quina és la velocitat màxima permesa en una autopista?', '../web/img/autopista.jpg', 3, '80 km/h', '100 km/h', '120 km/h', '140 km/h'),
