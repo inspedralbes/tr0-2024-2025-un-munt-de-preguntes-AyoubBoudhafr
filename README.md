@@ -11,9 +11,9 @@ El projecte s'ha de poder desplegar en mode desenvolupament simplement fent dock
 
 # Aquest fitxer ha de contenir com a mínim:
  * Mohamed Ayoub Boudhafri Nijaoui
- * Nom del projecte
- * Petita descripció
+ * Tester
+ * Una web en la que podes contestar preguntes de autoescola
  * Adreça del gestor de tasques (taiga, jira, trello...)
  * Adreça del prototip gràfic del projecte (Penpot, figma, moqups...)
- * URL de producció (quan la tingueu)
- * Estat: (explicació d'en quin punt està)
+ * http://a23mohbounij.daw.inspedralbes.cat/tr0-2024-2025-un-munt-de-preguntes-AyoubBoudhafr/web/
+ * El projecte esta finalitzat, les preguntes funcionen de manera correcte y el CRUD tambe, l'unic que no funciona es un boto que he posat de inicar sesio que al final no he pugut utilitzar.
