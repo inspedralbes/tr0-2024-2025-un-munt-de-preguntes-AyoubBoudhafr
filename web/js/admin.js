@@ -1,11 +1,10 @@
-
 document.getElementById('adm').innerHTML = '<h1>Administracion del juego</h1>';
 
 const ventanaAdmin = `
     <button id="irIndex">Volver al juego</button>
     <button id="crear">Crear pregunta</button>
     <div id="formularioPregunta" class="hidden">
-        <h4>Agregar Nueva Pregunta</h4> 
+        <h4 id="tituloFormulario">Agregar Nueva Pregunta</h4> 
         <input type="text" id="id" placeholder="Id de la pregunta" required>
         <input type="text" id="nuevaPregunta" placeholder="Escribe la pregunta" required>
         <input type="text" id="opcion1" placeholder="Opción 1" required>
@@ -18,6 +17,9 @@ const ventanaAdmin = `
 `;
 document.getElementById('volver').innerHTML = ventanaAdmin;
 
+let modoActualizar = false; 
+let idPreguntaActualizar = null;
+
 document.getElementById('irIndex').addEventListener('click', function() {
     window.location.href = 'index.html';
 });
@@ -25,6 +27,8 @@ document.getElementById('irIndex').addEventListener('click', function() {
 document.getElementById('crear').addEventListener('click', function() {
     const formulario = document.getElementById('formularioPregunta');
     formulario.classList.toggle('hidden');
+    document.getElementById('tituloFormulario').innerText = 'Agregar Nueva Pregunta';
+    modoActualizar = false; 
     document.getElementById('crud').innerHTML = '';
     document.getElementById('adm').innerHTML = '';
 });
@@ -45,23 +49,52 @@ document.getElementById('guardarPregunta').addEventListener('click', function() 
         respuesta_correcta: respuestaCorrecta
     };
 
-    fetch("./../back/crear.php", {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify(json)
-    })
-    .then(resp => resp.json())
-    .then(info => {
-        fetch("./../back/info.php")
+    if (modoActualizar) {
+        fetch("./../back/actualizar.php", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(json)
+        })
         .then(resp => resp.json())
-        .then(data => {
-            mostrarTodo(data);
+        .then(info => {
+            document.getElementById('formularioPregunta').classList.add('hidden');
+            fetch("./../back/info.php")
+            .then(resp => resp.json())
+            .then(data => {
+                mostrarTodo(data); 
+            });
+        })
+        .catch(error => {
+            console.error('Error al actualizar la pregunta:', error);
         });
-    });
+    } else {
+       
+        fetch("./../back/crear.php", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(json)
+        })
+        .then(resp => resp.json())
+        .then(info => {
+            document.getElementById('formularioPregunta').classList.add('hidden');
+            fetch("./../back/info.php")
+            .then(resp => resp.json())
+            .then(data => {
+                mostrarTodo(data); 
+            });
+        })
+        .catch(error => {
+            console.error('Error al crear la pregunta:', error);
+        });
+    }
 });
+
 fetch("./../back/info.php")
     .then(resp => resp.json())
     .then(data => {
@@ -103,32 +136,34 @@ function mostrarTodo(data) {
                 .then(data => {
                     mostrarTodo(data);
                 });
+            })
+            .catch(error => {
+                console.error('Error al borrar la pregunta:', error);
             });
         });
     });
-    let actaulizarPregunta = document.querySelectorAll('.actualizar');
-    actaulizarPregunta.forEach(boton => {
+
+    let actualizarPregunta = document.querySelectorAll('.actualizar');
+    actualizarPregunta.forEach(boton => {
         boton.addEventListener('click', function() {
-            let idPreguntaActalitza = this.getAttribute('data-id');
-            let json2 = { id: idPreguntaActalitza};
-            fetch("./../back/actualizar.php", {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                method: "POST",
-                body: JSON.stringify(json2)
-            })
-            .then(resp => resp.json())
-            .then(infoActualitza => {
-                console.log(infoActualitza);
-                fetch("./../back/info.php")
-                .then(resp => resp.json())
-                .then(data => {
-                    document.getElementById('volver').innerHTML = '';
-                    mostrarTodo(data);
-                });
-            });
+            let idPregunta = this.getAttribute('data-id');
+            const preguntaData = data.find(preg => preg.id === idPregunta); 
+            document.getElementById('id').value = preguntaData.id;
+            document.getElementById('nuevaPregunta').value = preguntaData.pregunta;
+            document.getElementById('opcion1').value = preguntaData.opciones[0];
+            document.getElementById('opcion2').value = preguntaData.opciones[1];
+            document.getElementById('opcion3').value = preguntaData.opciones[2];
+            document.getElementById('opcion4').value = preguntaData.opciones[3];
+            document.getElementById('respuestaCorrecta').value = preguntaData.respuesta_correcta;
+            
+            modoActualizar = true; 
+            idPreguntaActualizar = idPregunta; 
+            
+            document.getElementById('crud').innerHTML = '';
+            
+            const formulario = document.getElementById('formularioPregunta');
+            formulario.classList.remove('hidden');
+            document.getElementById('tituloFormulario').innerText = 'Actualizar Pregunta';
         });
     });
 }

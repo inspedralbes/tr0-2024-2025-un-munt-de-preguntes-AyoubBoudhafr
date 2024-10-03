@@ -1,5 +1,5 @@
 <?php
-require_once('conexio.php');
+require_once('migrate.php');
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -25,6 +25,5 @@ if ($id) {
     echo json_encode(["success" => false, "message" => "ID no válido."]);
 }
 
-// Cerrar la conexión
 $conn->close();
 ?>
