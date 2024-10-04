@@ -15,7 +15,8 @@ const ventanaAdmin = `
         <button id="guardarPregunta">Guardar Pregunta</button>
     </div>
 `;
-document.getElementById('volver').innerHTML = ventanaAdmin;
+
+document.getElementById('adm').innerHTML += ventanaAdmin; 
 
 let modoActualizar = false; 
 let idPreguntaActualizar = null;
@@ -26,11 +27,14 @@ document.getElementById('irIndex').addEventListener('click', function() {
 
 document.getElementById('crear').addEventListener('click', function() {
     const formulario = document.getElementById('formularioPregunta');
-    formulario.classList.toggle('hidden');
+    formulario.classList.remove('hidden');
+    
+    document.getElementById('irIndex').classList.add('hidden');
+    document.getElementById('crear').classList.add('hidden'); 
+    document.getElementById('crud').classList.add('hidden');
+    
     document.getElementById('tituloFormulario').innerText = 'Agregar Nueva Pregunta';
     modoActualizar = false; 
-    document.getElementById('crud').innerHTML = '';
-    document.getElementById('adm').innerHTML = '';
 });
 
 document.getElementById('guardarPregunta').addEventListener('click', function() {
@@ -61,6 +65,10 @@ document.getElementById('guardarPregunta').addEventListener('click', function() 
         .then(resp => resp.json())
         .then(info => {
             document.getElementById('formularioPregunta').classList.add('hidden');
+            document.getElementById('irIndex').classList.remove('hidden');
+            document.getElementById('crear').classList.remove('hidden'); 
+            document.getElementById('crud').classList.remove('hidden'); 
+
             fetch("./../back/info.php")
             .then(resp => resp.json())
             .then(data => {
@@ -71,7 +79,6 @@ document.getElementById('guardarPregunta').addEventListener('click', function() 
             console.error('Error al actualizar la pregunta:', error);
         });
     } else {
-       
         fetch("./../back/crear.php", {
             headers: {
                 'Accept': 'application/json',
@@ -83,6 +90,10 @@ document.getElementById('guardarPregunta').addEventListener('click', function() 
         .then(resp => resp.json())
         .then(info => {
             document.getElementById('formularioPregunta').classList.add('hidden');
+            document.getElementById('irIndex').classList.remove('hidden');
+            document.getElementById('crear').classList.remove('hidden');
+            document.getElementById('crud').classList.remove('hidden');
+
             fetch("./../back/info.php")
             .then(resp => resp.json())
             .then(data => {
@@ -158,8 +169,9 @@ function mostrarTodo(data) {
             
             modoActualizar = true; 
             idPreguntaActualizar = idPregunta; 
-            
-            document.getElementById('crud').innerHTML = '';
+            document.getElementById('irIndex').classList.add('hidden');
+            document.getElementById('crear').classList.add('hidden'); 
+            document.getElementById('crud').classList.add('hidden'); 
             
             const formulario = document.getElementById('formularioPregunta');
             formulario.classList.remove('hidden');
