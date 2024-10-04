@@ -92,3 +92,53 @@ img{
 #guardarPregunta{
     margin-top: 20px;
 }
+#formularioPregunta {
+    background-color: #34495E; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    width: 300px;
+}
+
+#formularioPregunta input[type="text"],
+#formularioPregunta input[type="number"] {
+    width: calc(100% - 20px); 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #E2E8CE;
+    border-radius: 5px;
+    background-color: #E2E8CE;
+    color: #2C3E50;
+    font-size: 16px; 
+    transition: border 0.3s; 
+}
+
+#formularioPregunta input[type="text"]:focus,
+#formularioPregunta input[type="number"]:focus {
+    border: 1px solid #ACBFA4; 
+    outline: none; 
+}
+
+#guardarPregunta {
+    background-color: #E2E8CE;
+    color: #2C3E50; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px; 
+    font-size: 18px;
+    width: 100%;
+    transition: background-color 0.3s; 
+}
+
+#guardarPregunta:hover {
+    background-color: #ACBFA4; 
+}
+
+#tituloFormulario {
+    color: #E2E8CE; 
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
