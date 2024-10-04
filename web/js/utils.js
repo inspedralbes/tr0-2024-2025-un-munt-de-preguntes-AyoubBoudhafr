@@ -147,7 +147,7 @@ function imprimirResultados() {
     } else {
         let tiempo = parseInt(tiempoSeg / 60);
         let residuo = tiempoSeg % 60;
-        salida2 += '<h2>Temps total: ' + tiempo + ' minuts i ' + residuo + '</h2>'; 
+        salida2 += '<h2>Temps total: ' + tiempo + ' minuts i ' + residuo + ' segons</h2>'; 
     }
     
     for (let i = 0; i < respostesGlobal.length; i++) {
