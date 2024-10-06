@@ -41,7 +41,7 @@ h2{
     margin-top: 50px; 
 }
 
-#coche {
+#interrogante {
     height: 300px;
     display: block;  
     margin: 0 auto;
@@ -141,4 +141,7 @@ img{
     font-size: 22px;
     margin-bottom: 20px;
     text-align: center;
+}
+#admin{
+  margin: 0 auto
 }

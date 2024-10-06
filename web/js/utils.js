@@ -10,7 +10,7 @@ const contenidoInicial = `
     <div id="inicio" style="text-align: center; margin: 20px;">
         <h1>Benvingut al nostre Test!</h1>
         <p>Posa a prova els teus coneixements amb les nostres preguntes.</p>
-        <img id="coche" src="./img/interrogante2.png">
+        <img id="interrogante" src="./img/interrogante2.png">
         <button id="començar">Començar Test</button>
     </div>
 `;
