@@ -1,0 +1,246 @@
+
+{
+    "preguntes": [
+      {
+        "id": 1,
+        "pregunta": "Quina és la velocitat màxima permesa en una autopista en condicions normals?",
+        "respostes": [
+          {"id": 1, "etiqueta": "80 km/h"},
+          {"id": 2, "etiqueta": "100 km/h"},
+          {"id": 3, "etiqueta": "120 km/h"},
+          {"id": 4, "etiqueta": "140 km/h"}
+        ],
+        "resposta_correcta": 3,
+        "imatge": "../web/img/autopista.jpg"
+      },
+      {
+        "id": 2,
+        "pregunta": "Quin document has de portar sempre quan condueixes?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Carnet de conduir"},
+          {"id": 2, "etiqueta": "Passaport"},
+          {"id": 3, "etiqueta": "Document d'identitat"},
+          {"id": 4, "etiqueta": "Assegurança de vida"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/papeles.jpg"
+      },
+      {
+        "id": 3,
+        "pregunta": "Què has de fer quan et trobes amb un semàfor en vermell?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Continuar amb precaució"},
+          {"id": 2, "etiqueta": "Accelerar"},
+          {"id": 3, "etiqueta": "Reduir la velocitat"},
+          {"id": 4, "etiqueta": "Parar"}
+        ],
+        "resposta_correcta": 4,
+        "imatge": "../web/img/semaforo.jpg"
+      },
+      {
+        "id": 4,
+        "pregunta": "Quina és la norma general per avançar a altres vehicles?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Avançar pel costat dret"},
+          {"id": 2, "etiqueta": "Avançar pel costat esquerre"},
+          {"id": 3, "etiqueta": "Avançar pel mig de la carretera"},
+          {"id": 4, "etiqueta": "No es pot avançar"}
+        ],
+        "resposta_correcta": 2,
+        "imatge": "../web/img/adelantamiento.jpg"
+      },
+      {
+        "id": 5,
+        "pregunta": "Què significa una línia contínua al centre de la carretera?",
+        "respostes": [
+          {"id": 1, "etiqueta": "No es pot avançar"},
+          {"id": 2, "etiqueta": "Es pot avançar amb precaució"},
+          {"id": 3, "etiqueta": "Línia provisional"},
+          {"id": 4, "etiqueta": "Zona de canvi de carril"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/linea-continua.jpg"
+      },
+      {
+        "id": 6,
+        "pregunta": "Què indica un senyal de stop?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Parar completament i continuar amb precaució"},
+          {"id": 2, "etiqueta": "Reduir la velocitat i continuar"},
+          {"id": 3, "etiqueta": "Passar sense aturar-se"},
+          {"id": 4, "etiqueta": "Canviar de direcció"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/stop.jpg"
+      },
+      {
+        "id": 7,
+        "pregunta": "Quina és la distància mínima que has de mantenir amb el vehicle que vas davant en carreteres secundàries?",
+        "respostes": [
+          {"id": 1, "etiqueta": "1 metre"},
+          {"id": 2, "etiqueta": "2 metres"},
+          {"id": 3, "etiqueta": "4 metres"},
+          {"id": 4, "etiqueta": "5 metres"}
+        ],
+        "resposta_correcta": 3,
+        "imatge": "../web/img/distancia.jpg"
+      },
+      {
+        "id": 8,
+        "pregunta": "En quines condicions és obligatori utilitzar el casc?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Quan condueixes un cotxe"},
+          {"id": 2, "etiqueta": "Quan condueixes una bicicleta només de nit"},
+          {"id": 3, "etiqueta": "Quan condueixes una moto o ciclomotor"},
+          {"id": 4, "etiqueta": "Quan condueixes un camió"}
+        ],
+        "resposta_correcta": 3,
+        "imatge": "../web/img/casco.jpg"
+      },
+      {
+        "id": 9,
+        "pregunta": "Quina és la velocitat màxima en zones urbanes?",
+        "respostes": [
+          {"id": 1, "etiqueta": "30 km/h"},
+          {"id": 2, "etiqueta": "50 km/h"},
+          {"id": 3, "etiqueta": "70 km/h"},
+          {"id": 4, "etiqueta": "90 km/h"}
+        ],
+        "resposta_correcta": 2,
+        "imatge": "../web/img/urbano.jpg"
+      },
+      {
+        "id": 10,
+        "pregunta": "Què has de fer si arribes a una rotonda amb senyal de cediu el pas?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Cedir el pas als vehicles que circulen per la rotonda"},
+          {"id": 2, "etiqueta": "Entrar sense aturar-se"},
+          {"id": 3, "etiqueta": "Aturar-se completament abans de continuar"},
+          {"id": 4, "etiqueta": "Canviar de direcció sense mirar"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/rotonda.jpg"
+      },
+      {
+        "id": 11,
+        "pregunta": "Què indica una línia d'atenció al conductor a la carretera?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Que estàs a punt de sortir de la carretera"},
+          {"id": 2, "etiqueta": "Que és zona d'estacionament"},
+          {"id": 3, "etiqueta": "Que has de reduir la velocitat"},
+          {"id": 4, "etiqueta": "Que la carretera és perillosa"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/atencion.jpg"
+      },
+      {
+        "id": 12,
+        "pregunta": "Quina norma s'ha de seguir en una intersecció sense senyalització?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Sempre tenir prioritat"},
+          {"id": 2, "etiqueta": "Prioritzar el trànsit del carrer principal"},
+          {"id": 3, "etiqueta": "Aturar-se i comprovar els altres vehicles"},
+          {"id": 4, "etiqueta": "Respectar la prioritat de la dreta"}
+        ],
+        "resposta_correcta": 4,
+        "imatge": "../web/img/interseccio.jpg"
+      },
+      {
+        "id": 13,
+        "pregunta": "Com ha de ser l'ús dels llums en condicions de boira?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Utilitzar llums de boira"},
+          {"id": 2, "etiqueta": "Utilitzar llums d'ús diürn"},
+          {"id": 3, "etiqueta": "Utilitzar només els llums de posició"},
+          {"id": 4, "etiqueta": "No utilitzar cap llum"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/boira.jpg"
+      },
+          {
+        "id": 14,
+        "pregunta": "Què indica un senyal triangular amb fons blanc i vora vermella?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Advertència de perill"},
+          {"id": 2, "etiqueta": "Obligació de detenció"},
+          {"id": 3, "etiqueta": "Restricció de velocitat"},
+          {"id": 4, "etiqueta": "Prohibició d'entrada"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/ceda.jpg"
+      },
+      {
+        "id": 15,
+        "pregunta": "Quan està permès estacionar davant d'una entrada de garatge?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Mai"},
+          {"id": 2, "etiqueta": "Només si hi ha senyalització que ho permet"},
+          {"id": 3, "etiqueta": "Quan el garatge no està en ús"},
+          {"id": 4, "etiqueta": "Durant la nit"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/estacionar.jpg"
+      },
+      {
+        "id": 16,
+        "pregunta": "Què has de fer si et trobes amb una cruïlla sense senyals i un vehicle s'aproxima des de la dreta?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Cedir el pas"},
+          {"id": 2, "etiqueta": "Continuar sense parar"},
+          {"id": 3, "etiqueta": "Accelerar per passar primer"},
+          {"id": 4, "etiqueta": "Aturar-te i esperar"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/derecha.jpg"
+      },
+      {
+        "id": 17,
+        "pregunta": "Què has de fer quan un vehicle d'emergència amb llums i sirena et supera?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Mantenir-te a la dreta i reduir la velocitat"},
+          {"id": 2, "etiqueta": "Accelerar per no bloquejar el pas"},
+          {"id": 3, "etiqueta": "Aturar-te al mig de la carretera"},
+          {"id": 4, "etiqueta": "Seguir el vehicle d'emergència"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/ambulancia.jpg"
+      },
+      {
+        "id": 18,
+        "pregunta": "En quin cas és obligatori utilitzar el cinturó de seguretat?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Sempre, tant si vas com a conductor com a passatger"},
+          {"id": 2, "etiqueta": "Només quan condueixes per autopistes"},
+          {"id": 3, "etiqueta": "Només si viatges a la part del davant del vehicle"},
+          {"id": 4, "etiqueta": "Només per a passatgers majors de 12 anys"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/cinturon.jpg"
+      },
+      {
+        "id": 19,
+        "pregunta": "Quin és l'ús correcte dels llums de carretera en condicions de nit amb visibilitat clara?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Utilitzar els llums d'altes"},
+          {"id": 2, "etiqueta": "Utilitzar els llums de creuer"},
+          {"id": 3, "etiqueta": "Utilitzar els llums de posició"},
+          {"id": 4, "etiqueta": "Apagar els llums"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/carretera_noche.jpg"
+      },
+      {
+        "id": 20,
+        "pregunta": "Com ha de ser la separació entre els vehicles en condicions de pluja intensa?",
+        "respostes": [
+          {"id": 1, "etiqueta": "Més gran de l'habitual"},
+          {"id": 2, "etiqueta": "Menys gran de l'habitual"},
+          {"id": 3, "etiqueta": "Igual que en condicions normals"},
+          {"id": 4, "etiqueta": "No cal preocupar-se per la separació"}
+        ],
+        "resposta_correcta": 1,
+        "imatge": "../web/img/lluvia.jpg"
+      }
+    ]
+  }
+  

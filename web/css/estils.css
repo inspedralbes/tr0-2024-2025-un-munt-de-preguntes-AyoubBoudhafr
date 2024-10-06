@@ -1,0 +1,147 @@
+body {
+    text-align: center;
+    background-color: #283747; 
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+button {
+    background-color: #E2E8CE; 
+    color: #2C3E50;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px; 
+    font-size: 20px;
+    
+}
+
+button:hover {
+    background-color: #ACBFA4;
+}
+
+h4, h3, h2, h1 {
+    color: #E2E8CE;
+}
+h4{
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 45px;
+}
+h2{
+    font-size: 35px;
+}
+#inicio {
+    margin-top: 50px; 
+}
+
+#interrogante {
+    height: 300px;
+    display: block;  
+    margin: 0 auto;
+}
+
+p {
+    color: #E2E8CE; 
+    font-size: 15px;
+}
+button.resp {
+    margin: 5px; 
+}
+#començar{
+    height: 60px;
+    width: 230px;
+    font-size: 30PX;
+    margin-top: 40px;
+}
+#anterior, #siguiente, #reset{
+    margin-top: 20px;
+    margin-left: 130px;
+    margin-right: 130px;
+    width: 160px;
+    height: 35px;
+    font-size: 25px;
+}
+img{
+    margin-bottom: 25px;
+}
+#retart{
+    margin-left: 130px;
+    margin-right: 130px;
+    width: 160px;
+    height: 35px;
+    font-size: 25px;
+}
+.borrarPreg{
+    margin-bottom: 30px;
+}
+#volver{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.hidden {
+    display: none;
+}
+#guardarPregunta{
+    margin-top: 20px;
+}
+#formularioPregunta {
+    background-color: #34495E; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    width: 300px;
+}
+
+#formularioPregunta input[type="text"],
+#formularioPregunta input[type="number"] {
+    width: calc(100% - 20px); 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #E2E8CE;
+    border-radius: 5px;
+    background-color: #E2E8CE;
+    color: #2C3E50;
+    font-size: 16px; 
+    transition: border 0.3s; 
+}
+
+#formularioPregunta input[type="text"]:focus,
+#formularioPregunta input[type="number"]:focus {
+    border: 1px solid #ACBFA4; 
+    outline: none; 
+}
+
+#guardarPregunta {
+    background-color: #E2E8CE;
+    color: #2C3E50; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px; 
+    font-size: 18px;
+    width: 100%;
+    transition: background-color 0.3s; 
+}
+
+#guardarPregunta:hover {
+    background-color: #ACBFA4; 
+}
+
+#tituloFormulario {
+    color: #E2E8CE; 
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#admin{
+  margin: 0 auto
+}
