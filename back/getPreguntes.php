@@ -45,7 +45,7 @@ $_SESSION['preguntes'] = $arrayEnvio;
 
 // envio el json sin respuestas correctas al front
 echo json_encode($_SESSION['preguntes']);
-
+$conn->close();
 // cierro conexion con base de datos
 // mysqli_close($conn);
 // CREATE TABLE preguntes (

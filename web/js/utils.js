@@ -6,7 +6,6 @@ let comienzoCrono;
 const contenidoInicial = `
     <header>
         <button id="admin">Admin DB</button>
-        <button id="sesion">Iniciar sesion</button>
     </header>
     <div id="inicio" style="text-align: center; margin: 20px;">
         <h1>Benvingut al nostre Test!</h1>
@@ -15,6 +14,7 @@ const contenidoInicial = `
         <button id="començar">Començar Test</button>
     </div>
 `;
+
 document.getElementById('app').innerHTML = contenidoInicial;
 document.getElementById('admin').addEventListener('click', function() {
     window.location.href = 'admin.html';
